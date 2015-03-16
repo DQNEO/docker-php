@@ -23,7 +23,7 @@ RUN yum -y install libxml2-devel; yum clean all
 RUN ./buildconf
 RUN ./configure
 
-RUN make && make install
+#RUN make && make install
 
 CMD ["php", "-v"]
 
