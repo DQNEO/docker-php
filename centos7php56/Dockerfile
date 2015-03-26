@@ -28,9 +28,9 @@ RUN yum -y install --enablerepo=remi-php56 \
 RUN yum -y install --enablerepo=remi-php56 ImageMagick ImageMagick-devel ; yum clean all;
 
 # imagick
-RUN yum -y install --enablerepo=remi-php56 php-pecl-imagick
+#RUN yum -y install --enablerepo=remi-php56 php-pecl-imagick
 
 # gd
-RUN yum -y install --enablerepo=remi-php56 php-gd
+#RUN yum -y install --enablerepo=remi-php56 php-gd
 
 CMD ["php", "-v"]
