@@ -4,23 +4,25 @@ MAINTAINER DQNEO
 
 RUN yum -y install git; yum clean all;
 
-# install packages to build php itslef
+WORKDIR /usr/local/src
+
+# install packages to build php-src
 RUN yum -y install wget tar make gcc autoconf bison re2c; yum clean all
 
 # install packages to build php extensions
 RUN yum -y install libxml2-devel; yum clean all
 
-WORKDIR /usr/local/src
+RUN git clone --depth 1 https://github.com/php/php-src.git
 
-RUN git clone https://github.com/php/php-src.git
+WORKDIR /usr/local/src/php-src
 
-# RUN tar xfz php7.tar.gz
-# RUN mv php-src-POST_PHP7_EREG_MYSQL_REMOVALS php-src
-# WORKDIR /tmp/php-src
+RUN git pull --ff-only
+RUN ./buildconf
+RUN ./configure --prefix=/opt/php \
+   --enable-mbstring
 
-# RUN ./buildconf
-# RUN ./configure
+RUN make && make install
 
-# #RUN make && make install
+ENV PATH /opt/php/bin:${PATH}
 
-# CMD ["php", "-v"]
+CMD ["php", "-v"]
