@@ -12,14 +12,20 @@ RUN yum -y install wget tar make gcc autoconf bison re2c; yum clean all
 # install packages to build php extensions
 RUN yum -y install libxml2-devel; yum clean all
 
-RUN git clone --depth 1 https://github.com/php/php-src.git
+ENV TAG_NAME POST_PHP7_EREG_MYSQL_REMOVALS
+ENV ARCHIVE ${TAG_NAME}.tar.gz
 
-WORKDIR /usr/local/src/php-src
+RUN wget https://github.com/php/php-src/archive/${ARCHIVE}
 
-RUN git pull --ff-only
+RUN tar xfz ${ARCHIVE} \
+ && rm  ${ARCHIVE}
+
+WORKDIR /usr/local/src/php-src-${TAG_NAME}
+
 RUN ./buildconf
+
 RUN ./configure --prefix=/opt/php \
-   --enable-mbstring
+  --enable-mbstring
 
 RUN make && make install
 
