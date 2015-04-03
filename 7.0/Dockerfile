@@ -26,7 +26,7 @@ RUN ./buildconf
 RUN ./configure --prefix=/opt/php \
   --enable-mbstring
 
-RUN make && make install
+RUN make && make install && make clean
 
 ENV PATH /opt/php/bin:${PATH}
 
