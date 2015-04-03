@@ -1,3 +1,4 @@
+# https://github.com/DQNEO/docker-base/tree/master/centos7
 FROM dqneo/base:centos7
 
 MAINTAINER DQNEO
