@@ -14,13 +14,10 @@ WORKDIR /usr/local/src
 ENV TAG_NAME POST_PHP7_EREG_MYSQL_REMOVALS
 ENV ARCHIVE ${TAG_NAME}.tar.gz
 
-RUN wget https://github.com/php/php-src/archive/${ARCHIVE}
+RUN yum -y install git; yum clean all
+RUN git clone --depth 1 https://github.com/php/php-src.git
 
-RUN tar xfz ${ARCHIVE} \
- && rm  ${ARCHIVE}
-
-WORKDIR /usr/local/src/php-src-${TAG_NAME}
-
+WORKDIR /usr/local/src/php-src
 RUN ./buildconf
 
 RUN ./configure --prefix=/opt/php \
