@@ -11,9 +11,6 @@ RUN yum -y install libxml2-devel; yum clean all
 
 WORKDIR /usr/local/src
 
-ENV TAG_NAME POST_PHP7_EREG_MYSQL_REMOVALS
-ENV ARCHIVE ${TAG_NAME}.tar.gz
-
 RUN yum -y install git; yum clean all
 RUN git clone --depth 1 https://github.com/php/php-src.git
 
