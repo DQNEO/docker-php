@@ -32,7 +32,7 @@ RUN ./configure --prefix=/opt/php \
 --with-gd \
 --with-curl \
 --with-openssl \
---with-mcrypt=/opt \
+--with-mcrypt \
 --with-zlib  \
 --enable-json
 
