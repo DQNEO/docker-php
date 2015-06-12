@@ -4,7 +4,7 @@ FROM dqneo/base:centos7
 MAINTAINER DQNEO
 
 # install packages to build php-src
-RUN yum -y install wget tar make gcc autoconf bison re2c; yum clean all
+RUN yum -y install tar make gcc autoconf bison re2c; yum clean all
 
 # install packages to build php extensions
 RUN yum -y install libxml2-devel libcurl-devel libmcrypt-devel openssl-devel libpng-devel ; yum clean all
