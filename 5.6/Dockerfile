@@ -12,7 +12,7 @@ RUN yum -y install libxml2-devel libcurl-devel libmcrypt-devel openssl-devel lib
 WORKDIR /usr/local/src
 ENV PHP_VER 5.6.9
 
-RUN curl -sL http://jp1.php.net/get/php-${PHP_VER}.tar.gz/from/this/mirror -o php-${PHP_VER}.tar.gz \
+RUN curl --silent --location http://jp1.php.net/get/php-${PHP_VER}.tar.gz/from/this/mirror -o php-${PHP_VER}.tar.gz \
   && tar xfz php-${PHP_VER}.tar.gz \
   && rm php-${PHP_VER}.tar.gz
 
