@@ -13,9 +13,9 @@ RUN pecl install memcache
 RUN echo "extension=memcache.so" >> /opt/php/lib/php.ini
 
 # pecl memcached
-RUN yum -y install libmemcached-devel
-RUN pecl install memcached
-RUN echo "extension=memcached.so" >> /opt/php/lib/php.ini
+#RUN yum -y install libmemcached-devel
+#RUN pecl install memcached
+#RUN echo "extension=memcached.so" >> /opt/php/lib/php.ini
 
 RUN yum -y install nano
 
