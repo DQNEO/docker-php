@@ -35,6 +35,8 @@ RUN ./configure --prefix=/opt/php \
 --with-openssl \
 --with-mcrypt \
 --with-zlib  \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd \
 --enable-json
 
 RUN make && make install && make clean
