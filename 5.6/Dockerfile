@@ -18,6 +18,8 @@ RUN curl --silent --location http://jp2.php.net/get/php-${PHP_VER}.tar.gz/from/t
 
 WORKDIR /usr/local/src/php-${PHP_VER}
 
+RUN yum -y install postgresql
+
 RUN ./configure --prefix=/opt/php \
 --enable-cli \
 --enable-mbstring \
@@ -37,6 +39,7 @@ RUN ./configure --prefix=/opt/php \
 --with-zlib  \
 --with-mysqli=mysqlnd \
 --with-pdo-mysql=mysqlnd \
+--with-pgsql \
 --enable-json
 
 RUN make && make install && make clean
