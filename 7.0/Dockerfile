@@ -36,6 +36,8 @@ RUN ./buildconf --force \
 --with-openssl \
 --with-mcrypt \
 --with-zlib  \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd \
 --enable-json
 
 RUN make && make install && make clean
