@@ -10,7 +10,7 @@ RUN yum -y install tar make gcc autoconf bison re2c; yum clean all
 RUN yum -y install libxml2-devel libcurl-devel libmcrypt-devel openssl-devel libpng-devel ; yum clean all
 
 WORKDIR /usr/local/src
-ENV PHP_VER 7.0.0alpha1
+ENV PHP_VER 7.0.0alpha2
 
 RUN curl --silent --location https://github.com/php/php-src/archive/php-${PHP_VER}.tar.gz -o php-${PHP_VER}.tar.gz \
     && tar xfz php-${PHP_VER}.tar.gz \
