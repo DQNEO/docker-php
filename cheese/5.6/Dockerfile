@@ -19,3 +19,5 @@ RUN echo "extension=memcached.so" >> /opt/php/lib/php.ini
 
 RUN yum -y install nano
 
+# prove
+RUN yum -y install perl-Test-Harness
