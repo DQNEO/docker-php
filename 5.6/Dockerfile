@@ -18,7 +18,7 @@ RUN curl --silent --location http://jp2.php.net/get/php-${PHP_VER}.tar.gz/from/t
 
 WORKDIR /usr/local/src/php-${PHP_VER}
 
-RUN yum -y install postgresql
+RUN yum -y install postgresql postgresql-devel
 
 RUN ./configure --prefix=/opt/php \
 --enable-cli \
