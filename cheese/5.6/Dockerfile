@@ -8,4 +8,7 @@ RUN yum -y install ImageMagick ImageMagick-devel
 RUN pecl install imagick
 RUN echo "extension=imagick.so" >> /opt/php/lib/php.ini
 
+# pecl memcache
+RUN pecl install memcache
+RUN echo "extension=memcache.so" >> /opt/php/lib/php.ini
 
