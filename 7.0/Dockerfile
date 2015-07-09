@@ -18,6 +18,8 @@ RUN curl --silent --location https://github.com/php/php-src/archive/php-${PHP_VE
 
 WORKDIR /usr/local/src/php-src-php-${PHP_VER}
 
+RUN yum -y install postgresql postgresql-devel
+
 RUN ./buildconf --force \
  && ./configure --prefix=/opt/php \
 --enable-cli \
@@ -38,6 +40,7 @@ RUN ./buildconf --force \
 --with-zlib  \
 --with-mysqli=mysqlnd \
 --with-pdo-mysql=mysqlnd \
+--with-pgsql \
 --enable-json
 
 RUN make && make install && make clean
