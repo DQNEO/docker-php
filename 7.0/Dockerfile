@@ -18,10 +18,6 @@ RUN curl --silent --location https://github.com/php/php-src/archive/php-${PHP_VE
 
 WORKDIR /usr/local/src/php-src-php-${PHP_VER}
 
-ADD pgsql.patch /tmp/pgsql.patch
-RUN yum -y install patch
-RUN patch ext/pgsql/pgsql.c < /tmp/pgsql.patch
-
 RUN yum -y install postgresql postgresql-devel
 
 RUN ./buildconf --force \
