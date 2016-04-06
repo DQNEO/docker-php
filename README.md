@@ -1,3 +1,4 @@
 # Dockerfile to build latest PHP from source
 
-I wanna use PHP 7!!!
+* 7.0 - build from tar ball
+* github-master - build from git clone
