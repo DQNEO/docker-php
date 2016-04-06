@@ -1,4 +1,4 @@
-FROM dqneo/base:centos7
+FROM centos:7
 
 MAINTAINER DQNEO
 
