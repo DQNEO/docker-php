@@ -1,7 +1,9 @@
-# https://github.com/DQNEO/docker-base/tree/master/centos7
-FROM dqneo/base:centos7
+FROM centos:7
 
 MAINTAINER DQNEO
+
+RUN yum -y update; yum clean all;
+RUN yum -y install epel-release; yum clean all
 
 # install packages to build php-src
 RUN yum -y install wget tar make gcc autoconf bison re2c; yum clean all
