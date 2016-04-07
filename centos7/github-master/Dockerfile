@@ -6,7 +6,7 @@ RUN yum -y update; yum clean all;
 RUN yum -y install epel-release; yum clean all
 
 # install packages to build php-src
-RUN yum -y install wget tar make gcc autoconf bison re2c; yum clean all
+RUN yum -y install tar make gcc autoconf bison re2c; yum clean all
 
 WORKDIR /usr/local/src
 
