@@ -13,10 +13,12 @@ WORKDIR /usr/local/src
 # install packages to build php extensions
 RUN yum -y install libxml2-devel libcurl-devel libmcrypt-devel openssl-devel libpng-devel ; yum clean all
 
-RUN yum -y install git; yum clean all
-RUN git clone --depth 1 https://github.com/php/php-src.git
+ENV PHP_TAG master
+RUN curl -sL https://github.com/php/php-src/archive/${PHP_TAG}.tar.gz -o php.tar.gz \
+    && tar xfz php.tar.gz \
+    && rm php.tar.gz
 
-WORKDIR /usr/local/src/php-src
+WORKDIR /usr/local/src/php-src-${PHP_TAG}
 
 RUN ./buildconf --force \
  && ./configure --prefix=/opt/php \

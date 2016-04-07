@@ -13,9 +13,8 @@ WORKDIR /usr/local/src
 # install packages to build php extensions
 RUN yum -y install libxml2-devel libcurl-devel libmcrypt-devel openssl-devel libpng-devel ; yum clean all
 
-ENV PHP_VER 7.0.5
-ENV PHP_TAG php-${PHP_VER}
-RUN curl --silent --location https://github.com/php/php-src/archive/${PHP_TAG}.tar.gz -o php.tar.gz \
+ENV PHP_TAG php-7.0.5
+RUN curl -sL https://github.com/php/php-src/archive/${PHP_TAG}.tar.gz -o php.tar.gz \
     && tar xfz php.tar.gz \
     && rm php.tar.gz
 
