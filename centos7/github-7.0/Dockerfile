@@ -14,12 +14,12 @@ WORKDIR /usr/local/src
 RUN yum -y install libxml2-devel libcurl-devel libmcrypt-devel openssl-devel libpng-devel ; yum clean all
 
 ENV PHP_VER 7.0.5
+ENV PHP_TAG php-${PHP_VER}
+RUN curl --silent --location https://github.com/php/php-src/archive/${PHP_TAG}.tar.gz -o php.tar.gz \
+    && tar xfz php.tar.gz \
+    && rm php.tar.gz
 
-RUN curl --silent --location https://github.com/php/php-src/archive/php-${PHP_VER}.tar.gz -o php-${PHP_VER}.tar.gz \
-    && tar xfz php-${PHP_VER}.tar.gz \
-    && rm php-${PHP_VER}.tar.gz
-
-WORKDIR /usr/local/src/php-src-php-${PHP_VER}
+WORKDIR /usr/local/src/php-src-${PHP_TAG}
 
 RUN ./buildconf --force \
  && ./configure --prefix=/opt/php \
