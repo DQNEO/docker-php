@@ -8,10 +8,11 @@ RUN yum -y install epel-release; yum clean all
 # install packages to build php-src
 RUN yum -y install tar make gcc autoconf bison re2c; yum clean all
 
+WORKDIR /usr/local/src
+
 # install packages to build php extensions
 RUN yum -y install libxml2-devel libcurl-devel libmcrypt-devel openssl-devel libpng-devel ; yum clean all
 
-WORKDIR /usr/local/src
 ENV PHP_VER 7.0.5
 
 RUN curl --silent --location https://github.com/php/php-src/archive/php-${PHP_VER}.tar.gz -o php-${PHP_VER}.tar.gz \
