@@ -10,16 +10,16 @@ RUN yum -y install tar make gcc autoconf bison re2c; yum clean all
 
 WORKDIR /usr/local/src
 
+# install packages to build php extensions
+RUN yum -y install libxml2-devel libcurl-devel libmcrypt-devel openssl-devel libpng-devel ; yum clean all
+
 RUN yum -y install git; yum clean all
 RUN git clone --depth 1 https://github.com/php/php-src.git
 
 WORKDIR /usr/local/src/php-src
-RUN ./buildconf
 
-# install packages to build php extensions
-RUN yum -y install libxml2-devel libcurl-devel libmcrypt-devel openssl-devel libpng-devel ; yum clean all
-
-RUN ./configure --prefix=/opt/php \
+RUN ./buildconf --force \
+ && ./configure --prefix=/opt/php \
 --enable-cli \
 --enable-mbstring \
 --enable-xml \
